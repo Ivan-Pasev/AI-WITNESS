@@ -1,4 +1,4 @@
-name: Omega5 safe-SDK lockfile probe
+name: Omega5 hardened-SDK lockfile probe
 
 on:
   push:
@@ -17,16 +17,20 @@ jobs:
         with:
           node-version: "22"
           cache: npm
-      - name: Pin candidate Hiero SDK dependency
-        run: npm install --save-exact @hiero-ledger/sdk@2.81.0
+      - name: Pin current Hiero SDK and safe transitive overrides
+        run: |
+          npm install --save-exact @hiero-ledger/sdk@2.87.0
+          npm pkg set overrides.protobufjs=8.6.6
+          npm pkg set overrides.ws=8.21.0
+          npm install
       - name: Capture candidate audit
-        run: npm audit --json > npm-audit-281.json || true
+        run: npm audit --json > npm-audit-hardened.json || true
       - name: Upload generated package metadata
         uses: actions/upload-artifact@v4
         with:
-          name: omega5-package-metadata-281
+          name: omega5-package-metadata-hardened
           path: |
             package.json
             package-lock.json
-            npm-audit-281.json
+            npm-audit-hardened.json
           if-no-files-found: error
