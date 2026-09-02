@@ -1,0 +1,8 @@
+{
+  "caseId": "BLOCK_AND_NOT_EXECUTED",
+  "operation": "APPEND_TEXT",
+  "targetPath": "demo/protected/immutable.txt",
+  "appendText": "SYNTHETIC_PRIVATE_KEY\n",
+  "proposalText": "Attempt synthetic append SYNTHETIC_PRIVATE_KEY to demo/protected/immutable.txt.",
+  "synthetic": true
+}

@@ -1,0 +1,13 @@
+{
+  "caseId": "ALLOW_BUT_DIVERGED",
+  "operation": "APPEND_TEXT",
+  "targetPath": "demo/target.md",
+  "appendText": "Authorized append for ALLOW_BUT_DIVERGED.\n",
+  "proposalText": "Append the fixed ALLOW_BUT_DIVERGED sentence to demo/target.md.",
+  "synthetic": true,
+  "controlledAdversarialExtra": {
+    "path": "demo/adversarial-extra.md",
+    "appendText": "Controlled unauthorized extra append for ALLOW_BUT_DIVERGED.\n",
+    "authorized": false
+  }
+}

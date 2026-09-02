@@ -1,0 +1,34 @@
+{
+  "caseId": "ALLOW_AND_MATCH",
+  "protocol": "IRP-1",
+  "schemaVersion": "1",
+  "receipts": [
+    {
+      "receiptId": "demo-a-w0",
+      "receiptKind": "W0_OBSERVATION",
+      "receiptHash": "90b08267b3298b77cf628611198577900d2df075359f0c932894a9db59a1e518"
+    },
+    {
+      "receiptId": "demo-a-w1",
+      "receiptKind": "W1_INTENT",
+      "receiptHash": "7e91a4f3502b23508850682947b206d02c45fee119b1b3d006ed15d1ea739030"
+    },
+    {
+      "receiptId": "demo-a-w2",
+      "receiptKind": "W2_AUTHORIZATION",
+      "receiptHash": "681f0ac99789e2cbd5104a9c0e9caca1a1b41ae5304994c1cf38deab5cd8fb18"
+    },
+    {
+      "receiptId": "demo-a-w3",
+      "receiptKind": "W3_OUTCOME",
+      "receiptHash": "99fa5f804a87cc35b1589684e8b532fbb65fb59bf8d320059b1df904f8698842"
+    }
+  ],
+  "policy": {
+    "policyId": "github-demo-policy",
+    "version": "1",
+    "policyHash": "3a93fb8cb92a325379f3f3b154693af076cb1ec509e467fe357b54cb108208c0"
+  },
+  "generationProfile": "IRP-1-PHASE4-DETERMINISTIC-v1",
+  "publicBundleDescriptorHash": "9a721dfb8657d0f32e438f1ec6f16d66032620dcdcc51aa1e2970e899548653d"
+}

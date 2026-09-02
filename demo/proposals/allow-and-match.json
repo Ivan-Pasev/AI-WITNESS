@@ -1,0 +1,8 @@
+{
+  "caseId": "ALLOW_AND_MATCH",
+  "operation": "APPEND_TEXT",
+  "targetPath": "demo/target.md",
+  "appendText": "Authorized append for ALLOW_AND_MATCH.\n",
+  "proposalText": "Append the fixed ALLOW_AND_MATCH sentence to demo/target.md.",
+  "synthetic": true
+}

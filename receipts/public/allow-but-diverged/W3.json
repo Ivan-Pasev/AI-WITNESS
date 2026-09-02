@@ -1,0 +1,20 @@
+{
+  "protocol": "IRP-1",
+  "schemaVersion": "1",
+  "receiptKind": "W3_OUTCOME",
+  "receiptId": "demo-c-w3",
+  "sessionId": "demo-session-c",
+  "nonce": "demo-c-n3",
+  "createdAt": "2026-09-02T12:00:03Z",
+  "previousReceiptHash": "207527c72563473675e0090c58a0b84d85277818bbdc03ceafa66fcc759058aa",
+  "payload": {
+    "authorizationReceiptHash": "207527c72563473675e0090c58a0b84d85277818bbdc03ceafa66fcc759058aa",
+    "executionState": "EXECUTED",
+    "actualActionManifest": {"operation": "APPEND_TEXT", "targetPaths": ["demo/target.md", "demo/adversarial-extra.md"], "changeCount": 2, "changeDigest": "ac8bbbff7eabf6fb0fe94f9103a215de05babb712aae3813b3baaed21aae721c", "fileManifest": [{"path": "demo/target.md", "beforeHash": "bf15bcaedf5b9a35723046d8be8a5c653565b916af6806fd82be9ab627fdec45", "afterHash": "812f83093428c4b12df87c5a54512f054ca0138acdf7b2677bdf90d0819719e7"}, {"path": "demo/adversarial-extra.md", "beforeHash": "d12c479ecbfc5080c1703651984e6f953bc3cf0c229505c2e0b0b34661146e52", "afterHash": "16161c340814a446e5fda1ab745d7295d793d4eb59e5f2b6230c8b7e32fd30f3"}]},
+    "observedResult": {"beforeStateHash": "41f75bfa4cae5139f955142c737a4eca5fa9015a5eb280cf04ef72ef26c6c10f", "afterStateHash": "8b0e34cc168700bebb7f4bfa49e7ca361ff4aa3260d92d29da3a718503525cf5", "mutated": true},
+    "correspondenceVerdict": "DIVERGED",
+    "violations": [{"code": "UNAUTHORIZED_EXTRA_PATH", "path": "demo/adversarial-extra.md"}],
+    "residualUnknowns": ["semantic correctness remains outside IRP-1"]
+  },
+  "receiptHash": "2ee0c3c4a3525fc311a872a106935e8c4f2c92229fffa5685b83e957651c05ac"
+}

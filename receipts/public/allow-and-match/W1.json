@@ -1,0 +1,62 @@
+{
+  "protocol": "IRP-1",
+  "schemaVersion": "1",
+  "receiptKind": "W1_INTENT",
+  "receiptId": "demo-a-w1",
+  "sessionId": "demo-session-a",
+  "nonce": "demo-a-n1",
+  "createdAt": "2026-09-02T10:00:01Z",
+  "previousReceiptHash": "90b08267b3298b77cf628611198577900d2df075359f0c932894a9db59a1e518",
+  "payload": {
+    "interpretation": {
+      "caseId": "ALLOW_AND_MATCH",
+      "statement": "The bounded requested append is within the demo policy surface."
+    },
+    "assumptions": [
+      "fixture contents equal committed synthetic baseline"
+    ],
+    "uncertainty": {
+      "known": [
+        "requested path and append text are fixed"
+      ],
+      "uncertain": [],
+      "unknown": [
+        "semantic correctness"
+      ],
+      "limitations": [
+        "deterministic demo only"
+      ]
+    },
+    "intendedAction": {
+      "operation": "APPEND_TEXT",
+      "targetPath": "demo/target.md",
+      "appendText": "Authorized append for ALLOW_AND_MATCH.\n"
+    },
+    "actionManifest": {
+      "operation": "APPEND_TEXT",
+      "targetPaths": [
+        "demo/target.md"
+      ],
+      "changeCount": 1,
+      "changeDigest": "1af5f00e181e3ecbd8285d0446531141f23038482fd5386244b3924e35f7ff79",
+      "fileManifest": [
+        {
+          "path": "demo/target.md",
+          "beforeHash": "bf15bcaedf5b9a35723046d8be8a5c653565b916af6806fd82be9ab627fdec45",
+          "afterHash": "973fed40617c4f8913b7badae7bba564a26b5c1cc0240e80df521002cd2998ba"
+        }
+      ]
+    },
+    "expectedEffect": {
+      "changedFileCount": 1
+    },
+    "policyRef": {
+      "policyId": "github-demo-policy",
+      "version": "1"
+    },
+    "approvalExpectation": {
+      "required": true
+    }
+  },
+  "receiptHash": "7e91a4f3502b23508850682947b206d02c45fee119b1b3d006ed15d1ea739030"
+}

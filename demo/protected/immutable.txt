@@ -1,0 +1,1 @@
+IRP-1 protected synthetic fixture.

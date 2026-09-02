@@ -1,0 +1,52 @@
+{
+  "policyId": "github-demo-policy",
+  "policyVersion": "1",
+  "policyHash": "3a93fb8cb92a325379f3f3b154693af076cb1ec509e467fe357b54cb108208c0",
+  "ruleResults": [
+    {
+      "ruleId": "path-allowlist",
+      "ruleType": "PATH_ALLOWLIST",
+      "result": "PASS",
+      "reasonCode": "ALL_PATHS_ALLOWED",
+      "details": {
+        "checkedPathCount": 1
+      }
+    },
+    {
+      "ruleId": "path-denylist",
+      "ruleType": "PATH_DENYLIST",
+      "result": "PASS",
+      "reasonCode": "NO_DENIED_PATH_MATCH",
+      "details": {
+        "checkedPathCount": 1
+      }
+    },
+    {
+      "ruleId": "secret-scan",
+      "ruleType": "SECRET_SCAN",
+      "result": "PASS",
+      "reasonCode": "NO_FROZEN_MARKER_DETECTED",
+      "details": {
+        "scannerMode": "DEMO_HEURISTIC"
+      }
+    },
+    {
+      "ruleId": "change-count",
+      "ruleType": "CHANGE_COUNT",
+      "result": "PASS",
+      "reasonCode": "CHANGE_COUNT_WITHIN_LIMIT",
+      "details": {
+        "changedFileCount": 1,
+        "maxChangedFiles": 1
+      }
+    },
+    {
+      "ruleId": "human-approval",
+      "ruleType": "HUMAN_APPROVAL",
+      "result": "PASS",
+      "reasonCode": "REQUIRED_APPROVAL_RECORDED",
+      "details": {}
+    }
+  ],
+  "verdict": "ALLOW"
+}

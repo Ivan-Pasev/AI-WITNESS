@@ -1,0 +1,10 @@
+{
+  "caseId": "ALLOW_AND_MATCH",
+  "request": "Append the fixed ALLOW_AND_MATCH sentence to demo/target.md.",
+  "targetPaths": [
+    "demo/target.md"
+  ],
+  "changedFileCount": 1,
+  "approvalState": "REQUIRED_APPROVED",
+  "synthetic": true
+}

@@ -1,0 +1,30 @@
+{
+  "protocol": "IRP-1",
+  "schemaVersion": "1",
+  "receiptKind": "W2_AUTHORIZATION",
+  "receiptId": "demo-c-w2",
+  "sessionId": "demo-session-c",
+  "nonce": "demo-c-n2",
+  "createdAt": "2026-09-02T12:00:02Z",
+  "previousReceiptHash": "6b83d7e63cd7eaf76fc8a30e679c19e651140832de7cacb6f8a96de296349ca9",
+  "payload": {
+    "intentReceiptHash": "6b83d7e63cd7eaf76fc8a30e679c19e651140832de7cacb6f8a96de296349ca9",
+    "policy": {"id": "github-demo-policy", "version": "1"},
+    "policyHash": "3a93fb8cb92a325379f3f3b154693af076cb1ec509e467fe357b54cb108208c0",
+    "policyInput": {"targetPaths": ["demo/target.md"], "changedFileCount": 1, "proposalText": "Append the fixed ALLOW_BUT_DIVERGED sentence to demo/target.md.", "approvalState": "REQUIRED_APPROVED"},
+    "policyEvaluation": [
+      {"ruleId": "path-allowlist", "ruleType": "PATH_ALLOWLIST", "result": "PASS", "reasonCode": "ALL_PATHS_ALLOWED", "details": {"checkedPathCount": 1}},
+      {"ruleId": "path-denylist", "ruleType": "PATH_DENYLIST", "result": "PASS", "reasonCode": "NO_DENIED_PATH_MATCH", "details": {"checkedPathCount": 1}},
+      {"ruleId": "secret-scan", "ruleType": "SECRET_SCAN", "result": "PASS", "reasonCode": "NO_FROZEN_MARKER_DETECTED", "details": {"scannerMode": "DEMO_HEURISTIC"}},
+      {"ruleId": "change-count", "ruleType": "CHANGE_COUNT", "result": "PASS", "reasonCode": "CHANGE_COUNT_WITHIN_LIMIT", "details": {"changedFileCount": 1, "maxChangedFiles": 1}},
+      {"ruleId": "human-approval", "ruleType": "HUMAN_APPROVAL", "result": "PASS", "reasonCode": "REQUIRED_APPROVAL_RECORDED", "details": {}}
+    ],
+    "policyVerdict": "ALLOW",
+    "approvalRequirement": {"required": true},
+    "approvalState": "REQUIRED_APPROVED",
+    "authorizationVerdict": "AUTHORIZED",
+    "authorizedActionManifest": {"operation": "APPEND_TEXT", "targetPaths": ["demo/target.md"], "changeCount": 1, "changeDigest": "46454d4ea6bf4cb835b7864c13eb119d87cc7c38d1609301fe3bea88260f1acf", "fileManifest": [{"path": "demo/target.md", "beforeHash": "bf15bcaedf5b9a35723046d8be8a5c653565b916af6806fd82be9ab627fdec45", "afterHash": "812f83093428c4b12df87c5a54512f054ca0138acdf7b2677bdf90d0819719e7"}]},
+    "authorizationConstraints": ["exact action manifest binding", "execution forbidden unless AUTHORIZED"]
+  },
+  "receiptHash": "207527c72563473675e0090c58a0b84d85277818bbdc03ceafa66fcc759058aa"
+}
