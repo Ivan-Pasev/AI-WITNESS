@@ -6,6 +6,7 @@ on:
       - main
       - aiw-omega3-final-verify-v2
       - aiw-omega4-final-verify-v2
+      - aiw-omega5-final-verify-v2
   pull_request:
 
 permissions:
@@ -24,5 +25,5 @@ jobs:
         run: npm ci
       - name: Typecheck
         run: npm run typecheck
-      - name: Deterministic protocol, policy, and demo tests
+      - name: Deterministic protocol, policy, demo, and Hedera boundary tests
         run: npm test

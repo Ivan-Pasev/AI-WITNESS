@@ -8,10 +8,13 @@
   },
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "test": "node --test --experimental-strip-types tests/protocol/*.test.ts tests/policy/*.test.ts tests/demo/*.test.ts"
+    "test": "node --test --experimental-strip-types tests/protocol/*.test.ts tests/policy/*.test.ts tests/demo/*.test.ts tests/hedera/*.test.ts"
   },
   "devDependencies": {
     "@types/node": "22.15.17",
     "typescript": "5.8.3"
+  },
+  "dependencies": {
+    "@hiero-ledger/sdk": "2.87.0"
   }
 }
