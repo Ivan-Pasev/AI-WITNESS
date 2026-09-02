@@ -1,0 +1,41 @@
+name: IRP-1 Hedera Testnet Evidence
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  phase5:
+    runs-on: ubuntu-latest
+    env:
+      HEDERA_NETWORK: testnet
+      HEDERA_OPERATOR_ID: ${{ secrets.HEDERA_OPERATOR_ID }}
+      HEDERA_OPERATOR_KEY: ${{ secrets.HEDERA_OPERATOR_KEY }}
+      HEDERA_TOPIC_ID: ${{ secrets.HEDERA_TOPIC_ID }}
+      HEDERA_TOPIC_SUBMIT_KEY: ${{ secrets.HEDERA_TOPIC_SUBMIT_KEY }}
+      HEDERA_MIRROR_BASE: https://testnet.mirrornode.hedera.com
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Dependency audit
+        run: npm audit
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Deterministic regression gate
+        run: npm test
+      - name: Execute Phase-5 testnet proof
+        run: node --experimental-strip-types scripts/hedera-phase5.ts
+      - name: Upload genuine network evidence
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase5-hedera-evidence
+          path: phase5-output/
+          if-no-files-found: error

@@ -8,6 +8,7 @@ coverage/
 .cache/
 .tmp/
 tmp/
+phase5-output/
 
 # Environment and secrets
 .env
