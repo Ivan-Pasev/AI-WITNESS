@@ -4,7 +4,9 @@
 
 PHASE_0 — REPOSITORY PREFLIGHT
 
-Status at this commit: REMOTE INITIALIZATION COMPLETE; local checkout re-synchronization still required before later engineering phases are treated as locally/remote-equal.
+Status: **PASS**
+
+The canonical engineering surface is the public GitHub repository. A local checkout is optional for convenience and is not a prerequisite for protocol specification, implementation, testing, CI, or deployment.
 
 ## Repository Identity
 
@@ -12,30 +14,23 @@ Status at this commit: REMOTE INITIALIZATION COMPLETE; local checkout re-synchro
 - Public URL: `https://github.com/Ivan-Pasev/AI-WITNESS`
 - Visibility: public
 - Default branch: `main`
-- Starting public commit before this initialization: `dfc4796c6b4d81a5744991ada0b1568b8e945043` (`Initial commit`)
-- Connected GitHub permission at initialization: admin, with push/maintain/pull capability
+- Original genesis commit: `dfc4796c6b4d81a5744991ada0b1568b8e945043` (`Initial commit`)
+- Canonical Phase 0 initialization commit: `f6275de8769862686aa491307d3098076491a1d7`
+- Connected GitHub permission: admin, with push/maintain/pull capability
 
-## Local Engineering Root
+## Canonical Development Workflow
 
-Expected dedicated local engineering checkout:
+The project uses a cloud-native development path:
 
-`C:\gilc.us.mesh.repos\AI-WITNESS-IRP1`
+1. GitHub `main` is authoritative for source code, tests, protocol files, CI, releases, and deployable public artifacts.
+2. Google Drive `AI_WITNESS_IRP1_CANONICAL_WORKING_TREE` is authoritative for the Master Manuscript, White Paper, Hedera ecosystem grant pack, prior-art/positioning register, and human-readable engineering handoff.
+3. Implementation changes may be authored directly through authenticated GitHub access.
+4. GitHub Actions should become the reproducible execution surface for typechecking, tests, security/claim scans, evidence generation, and release gates.
+5. GitHub Pages should host the static public verifier when Phase 6 is reached.
+6. Hedera testnet and Mirror Node provide the external consensus-evidence surface in Phase 5.
+7. A local checkout remains optional for offline work or additional independent verification, but cloud-native progress MUST NOT depend on a particular workstation.
 
-A historically misbound similarly named checkout pointed to another repository and must not be repurposed.
-
-## Local Toolchain — Last Observed
-
-The last reported dedicated local recovery session observed:
-
-- Node.js: `v20.19.3`
-- npm: `10.8.2`
-- Git: `2.43.0`
-
-These values are historical local evidence and MUST be rechecked before implementation work resumes.
-
-## Git Identity
-
-Repository-local Git identity was reported configured in the dedicated recovery checkout. This public report intentionally does not expose the configured email address.
+This removes the earlier temporary local/remote-equality prerequisite. The unpublished historical local Phase 0 commit, if it still exists on a workstation, is non-canonical and must never be force-pushed over public `main`.
 
 ## Public / Private Boundary
 
@@ -47,6 +42,7 @@ Public repository material MAY include:
 - redacted public demonstration bundles;
 - Hedera testnet commitment evidence;
 - verifier code;
+- CI/release configuration;
 - public reports and documentation.
 
 The following MUST NOT be committed:
@@ -60,11 +56,15 @@ The following MUST NOT be committed:
 
 `.env.example` is intentionally allowed so configuration shape can be documented without secrets.
 
+## Secret Handling
+
+GitHub connector access is sufficient for repository code and documentation changes, but secret-management endpoints are intentionally not part of the normal connected surface. When Hedera testnet credentials are required, they must be configured through an approved GitHub Actions secret or equivalent protected environment mechanism without copying secrets into chat, Drive, source files, logs, or public evidence bundles.
+
 ## Security Baseline
 
-This commit establishes a Node-oriented `.gitignore`, an explicit private `internal/` boundary, a private receipt boundary, environment/credential exclusions, editor/OS exclusions, and Apache License 2.0.
+The repository establishes a Node-oriented `.gitignore`, an explicit private `internal/` boundary, a private receipt boundary, environment/credential exclusions, editor/OS exclusions, and Apache License 2.0.
 
-No secret material is intentionally included in this commit.
+No secret material is intentionally included in Phase 0.
 
 ## Claim Boundary
 
@@ -74,22 +74,21 @@ IRP-1 is intended to make bounded receipt integrity, authorization ordering, pol
 
 IRP-1 does not prove that an AI interpretation is true, that reasoning is correct, that an action is ethical, that a system is legally compliant, or that the system is completely secure.
 
-## History Reconciliation Note
+## Phase 0 Verdict
 
-An earlier local-only Phase 0 commit was reported from the dedicated recovery clone but was never observed on public `main`. Because authenticated GitHub connector access is now confirmed, this atomic public initialization commit becomes the canonical remote Phase 0 root.
+- repository identity: PASS
+- public `main`: PASS
+- authenticated GitHub write access: PASS
+- Apache-2.0 license: PASS
+- secure `.gitignore`: PASS
+- preflight report: PASS
+- private-path boundary: PASS
+- local workstation dependency: NONE
 
-The unpublished local-only commit must be preserved as a local archive reference if it still exists, then the dedicated local `main` must be re-synchronized to canonical `origin/main` before Phase 0 is declared fully closed across local and remote surfaces.
+`PHASE_0: PASS`
 
-Do not force-push either history.
+## Next Authorized Gate
 
-## Next Gate
+`AIW-Ω0.5 — OPPORTUNITY / PRIOR-ART / POSITIONING FREEZE`
 
-Before AIW-Ω0.5 or protocol implementation:
-
-1. fetch canonical `origin/main` into the dedicated local checkout;
-2. preserve the unpublished local Phase 0 commit on a local archive branch if it still exists;
-3. align local `main` to canonical `origin/main` without changing public history;
-4. verify the worktree is clean and local `HEAD == origin/main`;
-5. record that equality in the canonical Engineering Evidence & Handoff document.
-
-Only then may `PHASE_0: PASS` be asserted.
+Phase 0.5 should be performed directly against current external sources, synchronized into the canonical Google Drive prior-art/positioning register, and then reflected into the public repository before protocol implementation proceeds.
