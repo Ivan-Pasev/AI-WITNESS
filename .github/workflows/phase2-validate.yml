@@ -3,7 +3,7 @@ name: Phase 2 validation
 on:
   push:
     branches:
-      - aiw-omega2-validate
+      - aiw-omega2-validation
 
 permissions:
   contents: read
