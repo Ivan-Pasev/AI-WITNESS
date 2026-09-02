@@ -1,0 +1,39 @@
+{
+  "policyId": "github-demo-policy",
+  "version": "1",
+  "rules": [
+    {
+      "id": "path-allowlist",
+      "type": "PATH_ALLOWLIST",
+      "patterns": ["demo/**"]
+    },
+    {
+      "id": "path-denylist",
+      "type": "PATH_DENYLIST",
+      "patterns": [
+        ".env",
+        ".env.*",
+        ".git/**",
+        ".github/**",
+        "src/hedera/**",
+        "receipts/private/**",
+        "demo/protected/**"
+      ]
+    },
+    {
+      "id": "secret-scan",
+      "type": "SECRET_SCAN",
+      "mode": "DEMO_HEURISTIC"
+    },
+    {
+      "id": "change-count",
+      "type": "CHANGE_COUNT",
+      "maxChangedFiles": 1
+    },
+    {
+      "id": "human-approval",
+      "type": "HUMAN_APPROVAL",
+      "required": true
+    }
+  ]
+}

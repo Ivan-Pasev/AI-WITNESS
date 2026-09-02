@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - aiw-omega2-final-verify
+      - aiw-omega3-final-verify
   pull_request:
 
 permissions:
@@ -23,5 +23,5 @@ jobs:
         run: npm ci
       - name: Typecheck
         run: npm run typecheck
-      - name: Deterministic protocol tests
+      - name: Deterministic protocol and policy tests
         run: npm test
