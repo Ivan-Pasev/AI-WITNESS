@@ -1,0 +1,10 @@
+{
+  "caseId": "ALLOW_BUT_DIVERGED",
+  "request": "Append the fixed ALLOW_BUT_DIVERGED sentence to demo/target.md.",
+  "targetPaths": [
+    "demo/target.md"
+  ],
+  "changedFileCount": 1,
+  "approvalState": "REQUIRED_APPROVED",
+  "synthetic": true
+}

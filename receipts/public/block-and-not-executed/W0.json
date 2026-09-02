@@ -1,0 +1,23 @@
+{
+  "protocol": "IRP-1",
+  "schemaVersion": "1",
+  "receiptKind": "W0_OBSERVATION",
+  "receiptId": "demo-b-w0",
+  "sessionId": "demo-session-b",
+  "nonce": "demo-b-n0",
+  "createdAt": "2026-09-02T11:00:00Z",
+  "previousReceiptHash": null,
+  "payload": {
+    "observationScope": {"caseId": "BLOCK_AND_NOT_EXECUTED", "scope": "synthetic in-repository demo fixtures only"},
+    "evidenceManifest": [
+      {"path": "demo/adversarial-extra.md", "sha256": "d12c479ecbfc5080c1703651984e6f953bc3cf0c229505c2e0b0b34661146e52"},
+      {"path": "demo/protected/immutable.txt", "sha256": "c2ae3975161b2e2ed8945c337f0dfff683f22096cef2298dc844fbba3dc303a8"},
+      {"path": "demo/target.md", "sha256": "bf15bcaedf5b9a35723046d8be8a5c653565b916af6806fd82be9ab627fdec45"}
+    ],
+    "repositoryState": {"fixtureStateHash": "41f75bfa4cae5139f955142c737a4eca5fa9015a5eb280cf04ef72ef26c6c10f", "fixturePaths": ["demo/adversarial-extra.md", "demo/protected/immutable.txt", "demo/target.md"]},
+    "constraints": ["deterministic scripted execution", "no network calls", "no live model", "no Hedera"],
+    "declaredUnknowns": ["semantic correctness is outside this proof"],
+    "redactions": []
+  },
+  "receiptHash": "954ccfcbf6e58544abdd03b2b22158d5fecac65ff4c4045fb6ebf0d3740afe94"
+}

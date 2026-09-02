@@ -1,0 +1,14 @@
+{
+  "caseId": "ALLOW_BUT_DIVERGED",
+  "protocol": "IRP-1",
+  "schemaVersion": "1",
+  "receipts": [
+    {"receiptId": "demo-c-w0", "receiptKind": "W0_OBSERVATION", "receiptHash": "7d0bf16c5ca07586aabe5589cebe900348290f2c1f8315d8cf4d70cc5a16701c"},
+    {"receiptId": "demo-c-w1", "receiptKind": "W1_INTENT", "receiptHash": "6b83d7e63cd7eaf76fc8a30e679c19e651140832de7cacb6f8a96de296349ca9"},
+    {"receiptId": "demo-c-w2", "receiptKind": "W2_AUTHORIZATION", "receiptHash": "207527c72563473675e0090c58a0b84d85277818bbdc03ceafa66fcc759058aa"},
+    {"receiptId": "demo-c-w3", "receiptKind": "W3_OUTCOME", "receiptHash": "2ee0c3c4a3525fc311a872a106935e8c4f2c92229fffa5685b83e957651c05ac"}
+  ],
+  "policy": {"policyId": "github-demo-policy", "version": "1", "policyHash": "3a93fb8cb92a325379f3f3b154693af076cb1ec509e467fe357b54cb108208c0"},
+  "generationProfile": "IRP-1-PHASE4-DETERMINISTIC-v1",
+  "publicBundleDescriptorHash": "18726586c310f0b9c8d83e1fe2d4fac69fafed26d39abe1d026938c7c6f21bed"
+}

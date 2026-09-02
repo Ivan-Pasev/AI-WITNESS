@@ -1,0 +1,10 @@
+{
+  "caseId": "BLOCK_AND_NOT_EXECUTED",
+  "chain": "CHAIN_VALID",
+  "policy": "BLOCK",
+  "approval": "REQUIRED_AND_APPROVED",
+  "authorization": "BLOCKED",
+  "execution": "NOT_EXECUTED",
+  "correspondence": "NOT_EXECUTED",
+  "hederaEvidence": "NONE"
+}

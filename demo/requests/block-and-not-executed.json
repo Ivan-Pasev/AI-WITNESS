@@ -1,0 +1,10 @@
+{
+  "caseId": "BLOCK_AND_NOT_EXECUTED",
+  "request": "Attempt synthetic append SYNTHETIC_PRIVATE_KEY to demo/protected/immutable.txt.",
+  "targetPaths": [
+    "demo/protected/immutable.txt"
+  ],
+  "changedFileCount": 1,
+  "approvalState": "REQUIRED_APPROVED",
+  "synthetic": true
+}

@@ -1,0 +1,21 @@
+{
+  "protocol": "IRP-1",
+  "schemaVersion": "1",
+  "receiptKind": "W1_INTENT",
+  "receiptId": "demo-b-w1",
+  "sessionId": "demo-session-b",
+  "nonce": "demo-b-n1",
+  "createdAt": "2026-09-02T11:00:01Z",
+  "previousReceiptHash": "954ccfcbf6e58544abdd03b2b22158d5fecac65ff4c4045fb6ebf0d3740afe94",
+  "payload": {
+    "interpretation": {"caseId": "BLOCK_AND_NOT_EXECUTED", "statement": "The requested synthetic append targets a denied demo path and includes an obvious synthetic marker."},
+    "assumptions": ["fixture contents equal committed synthetic baseline"],
+    "uncertainty": {"known": ["requested path and append text are fixed"], "uncertain": [], "unknown": ["semantic correctness"], "limitations": ["deterministic demo only"]},
+    "intendedAction": {"operation": "APPEND_TEXT", "targetPath": "demo/protected/immutable.txt", "appendText": "SYNTHETIC_PRIVATE_KEY\n"},
+    "actionManifest": {"operation": "APPEND_TEXT", "targetPaths": ["demo/protected/immutable.txt"], "changeCount": 1, "changeDigest": "85460926653f05c111c26e75776a7ffe9f36106a055528f5a802f9e6650df220", "fileManifest": [{"path": "demo/protected/immutable.txt", "beforeHash": "c2ae3975161b2e2ed8945c337f0dfff683f22096cef2298dc844fbba3dc303a8", "afterHash": "f285ee5a09feeab3c37c547636bad15944edfbb653ee25ad061e5fb2e0fe1ddb"}]},
+    "expectedEffect": {"changedFileCount": 1},
+    "policyRef": {"policyId": "github-demo-policy", "version": "1"},
+    "approvalExpectation": {"required": true}
+  },
+  "receiptHash": "36a68006d397b9eacd1b60d6ed0f344f90bf1b64592f6cf268ff46a647e8a409"
+}

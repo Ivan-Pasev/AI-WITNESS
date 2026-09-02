@@ -1,0 +1,40 @@
+{
+  "protocol": "IRP-1",
+  "schemaVersion": "1",
+  "receiptKind": "W3_OUTCOME",
+  "receiptId": "demo-a-w3",
+  "sessionId": "demo-session-a",
+  "nonce": "demo-a-n3",
+  "createdAt": "2026-09-02T10:00:03Z",
+  "previousReceiptHash": "681f0ac99789e2cbd5104a9c0e9caca1a1b41ae5304994c1cf38deab5cd8fb18",
+  "payload": {
+    "authorizationReceiptHash": "681f0ac99789e2cbd5104a9c0e9caca1a1b41ae5304994c1cf38deab5cd8fb18",
+    "executionState": "EXECUTED",
+    "actualActionManifest": {
+      "operation": "APPEND_TEXT",
+      "targetPaths": [
+        "demo/target.md"
+      ],
+      "changeCount": 1,
+      "changeDigest": "1af5f00e181e3ecbd8285d0446531141f23038482fd5386244b3924e35f7ff79",
+      "fileManifest": [
+        {
+          "path": "demo/target.md",
+          "beforeHash": "bf15bcaedf5b9a35723046d8be8a5c653565b916af6806fd82be9ab627fdec45",
+          "afterHash": "973fed40617c4f8913b7badae7bba564a26b5c1cc0240e80df521002cd2998ba"
+        }
+      ]
+    },
+    "observedResult": {
+      "beforeStateHash": "41f75bfa4cae5139f955142c737a4eca5fa9015a5eb280cf04ef72ef26c6c10f",
+      "afterStateHash": "ec19781abc0200d0433c271e8a1dc717a4f0dd40225b2dd5273edc8dbb83a5a3",
+      "mutated": true
+    },
+    "correspondenceVerdict": "MATCH",
+    "violations": [],
+    "residualUnknowns": [
+      "semantic correctness remains outside IRP-1"
+    ]
+  },
+  "receiptHash": "99fa5f804a87cc35b1589684e8b532fbb65fb59bf8d320059b1df904f8698842"
+}

@@ -1,0 +1,10 @@
+{
+  "caseId": "ALLOW_AND_MATCH",
+  "chain": "CHAIN_VALID",
+  "policy": "ALLOW",
+  "approval": "REQUIRED_AND_APPROVED",
+  "authorization": "AUTHORIZED",
+  "execution": "EXECUTED",
+  "correspondence": "MATCH",
+  "hederaEvidence": "NONE"
+}

@@ -1,0 +1,98 @@
+{
+  "protocol": "IRP-1",
+  "schemaVersion": "1",
+  "receiptKind": "W2_AUTHORIZATION",
+  "receiptId": "demo-a-w2",
+  "sessionId": "demo-session-a",
+  "nonce": "demo-a-n2",
+  "createdAt": "2026-09-02T10:00:02Z",
+  "previousReceiptHash": "7e91a4f3502b23508850682947b206d02c45fee119b1b3d006ed15d1ea739030",
+  "payload": {
+    "intentReceiptHash": "7e91a4f3502b23508850682947b206d02c45fee119b1b3d006ed15d1ea739030",
+    "policy": {
+      "id": "github-demo-policy",
+      "version": "1"
+    },
+    "policyHash": "3a93fb8cb92a325379f3f3b154693af076cb1ec509e467fe357b54cb108208c0",
+    "policyInput": {
+      "targetPaths": [
+        "demo/target.md"
+      ],
+      "changedFileCount": 1,
+      "proposalText": "Append the fixed ALLOW_AND_MATCH sentence to demo/target.md.",
+      "approvalState": "REQUIRED_APPROVED"
+    },
+    "policyEvaluation": [
+      {
+        "ruleId": "path-allowlist",
+        "ruleType": "PATH_ALLOWLIST",
+        "result": "PASS",
+        "reasonCode": "ALL_PATHS_ALLOWED",
+        "details": {
+          "checkedPathCount": 1
+        }
+      },
+      {
+        "ruleId": "path-denylist",
+        "ruleType": "PATH_DENYLIST",
+        "result": "PASS",
+        "reasonCode": "NO_DENIED_PATH_MATCH",
+        "details": {
+          "checkedPathCount": 1
+        }
+      },
+      {
+        "ruleId": "secret-scan",
+        "ruleType": "SECRET_SCAN",
+        "result": "PASS",
+        "reasonCode": "NO_FROZEN_MARKER_DETECTED",
+        "details": {
+          "scannerMode": "DEMO_HEURISTIC"
+        }
+      },
+      {
+        "ruleId": "change-count",
+        "ruleType": "CHANGE_COUNT",
+        "result": "PASS",
+        "reasonCode": "CHANGE_COUNT_WITHIN_LIMIT",
+        "details": {
+          "changedFileCount": 1,
+          "maxChangedFiles": 1
+        }
+      },
+      {
+        "ruleId": "human-approval",
+        "ruleType": "HUMAN_APPROVAL",
+        "result": "PASS",
+        "reasonCode": "REQUIRED_APPROVAL_RECORDED",
+        "details": {}
+      }
+    ],
+    "policyVerdict": "ALLOW",
+    "approvalRequirement": {
+      "required": true
+    },
+    "approvalState": "REQUIRED_APPROVED",
+    "authorizationVerdict": "AUTHORIZED",
+    "authorizedActionManifest": {
+      "operation": "APPEND_TEXT",
+      "targetPaths": [
+        "demo/target.md"
+      ],
+      "changeCount": 1,
+      "changeDigest": "1af5f00e181e3ecbd8285d0446531141f23038482fd5386244b3924e35f7ff79",
+      "fileManifest": [
+        {
+          "path": "demo/target.md",
+          "beforeHash": "bf15bcaedf5b9a35723046d8be8a5c653565b916af6806fd82be9ab627fdec45",
+          "afterHash": "973fed40617c4f8913b7badae7bba564a26b5c1cc0240e80df521002cd2998ba"
+        }
+      ]
+    },
+    "authorizationConstraints": [
+      "exact action manifest binding",
+      "execution forbidden unless AUTHORIZED"
+    ]
+  },
+  "receiptHash": "681f0ac99789e2cbd5104a9c0e9caca1a1b41ae5304994c1cf38deab5cd8fb18"
+}

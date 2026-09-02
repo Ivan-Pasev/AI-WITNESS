@@ -1,0 +1,21 @@
+{
+  "protocol": "IRP-1",
+  "schemaVersion": "1",
+  "receiptKind": "W1_INTENT",
+  "receiptId": "demo-c-w1",
+  "sessionId": "demo-session-c",
+  "nonce": "demo-c-n1",
+  "createdAt": "2026-09-02T12:00:01Z",
+  "previousReceiptHash": "7d0bf16c5ca07586aabe5589cebe900348290f2c1f8315d8cf4d70cc5a16701c",
+  "payload": {
+    "interpretation": {"caseId": "ALLOW_BUT_DIVERGED", "statement": "The bounded requested append is within policy; execution correspondence must still be checked."},
+    "assumptions": ["fixture contents equal committed synthetic baseline"],
+    "uncertainty": {"known": ["requested path and append text are fixed"], "uncertain": [], "unknown": ["semantic correctness"], "limitations": ["deterministic demo only"]},
+    "intendedAction": {"operation": "APPEND_TEXT", "targetPath": "demo/target.md", "appendText": "Authorized append for ALLOW_BUT_DIVERGED.\n"},
+    "actionManifest": {"operation": "APPEND_TEXT", "targetPaths": ["demo/target.md"], "changeCount": 1, "changeDigest": "46454d4ea6bf4cb835b7864c13eb119d87cc7c38d1609301fe3bea88260f1acf", "fileManifest": [{"path": "demo/target.md", "beforeHash": "bf15bcaedf5b9a35723046d8be8a5c653565b916af6806fd82be9ab627fdec45", "afterHash": "812f83093428c4b12df87c5a54512f054ca0138acdf7b2677bdf90d0819719e7"}]},
+    "expectedEffect": {"changedFileCount": 1},
+    "policyRef": {"policyId": "github-demo-policy", "version": "1"},
+    "approvalExpectation": {"required": true}
+  },
+  "receiptHash": "6b83d7e63cd7eaf76fc8a30e679c19e651140832de7cacb6f8a96de296349ca9"
+}

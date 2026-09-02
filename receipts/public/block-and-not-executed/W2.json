@@ -1,0 +1,30 @@
+{
+  "protocol": "IRP-1",
+  "schemaVersion": "1",
+  "receiptKind": "W2_AUTHORIZATION",
+  "receiptId": "demo-b-w2",
+  "sessionId": "demo-session-b",
+  "nonce": "demo-b-n2",
+  "createdAt": "2026-09-02T11:00:02Z",
+  "previousReceiptHash": "36a68006d397b9eacd1b60d6ed0f344f90bf1b64592f6cf268ff46a647e8a409",
+  "payload": {
+    "intentReceiptHash": "36a68006d397b9eacd1b60d6ed0f344f90bf1b64592f6cf268ff46a647e8a409",
+    "policy": {"id": "github-demo-policy", "version": "1"},
+    "policyHash": "3a93fb8cb92a325379f3f3b154693af076cb1ec509e467fe357b54cb108208c0",
+    "policyInput": {"targetPaths": ["demo/protected/immutable.txt"], "changedFileCount": 1, "proposalText": "Attempt synthetic append SYNTHETIC_PRIVATE_KEY to demo/protected/immutable.txt.", "approvalState": "REQUIRED_APPROVED"},
+    "policyEvaluation": [
+      {"ruleId": "path-allowlist", "ruleType": "PATH_ALLOWLIST", "result": "PASS", "reasonCode": "ALL_PATHS_ALLOWED", "details": {"checkedPathCount": 1}},
+      {"ruleId": "path-denylist", "ruleType": "PATH_DENYLIST", "result": "FAIL", "reasonCode": "DENIED_PATH_MATCH", "details": {"denied": ["demo/protected/immutable.txt"]}},
+      {"ruleId": "secret-scan", "ruleType": "SECRET_SCAN", "result": "FAIL", "reasonCode": "SYNTHETIC_SECRET_MARKER_DETECTED", "details": {"matchedSignatures": ["SYNTHETIC_PRIVATE_KEY_MARKER"]}},
+      {"ruleId": "change-count", "ruleType": "CHANGE_COUNT", "result": "PASS", "reasonCode": "CHANGE_COUNT_WITHIN_LIMIT", "details": {"changedFileCount": 1, "maxChangedFiles": 1}},
+      {"ruleId": "human-approval", "ruleType": "HUMAN_APPROVAL", "result": "PASS", "reasonCode": "REQUIRED_APPROVAL_RECORDED", "details": {}}
+    ],
+    "policyVerdict": "BLOCK",
+    "approvalRequirement": {"required": true},
+    "approvalState": "REQUIRED_APPROVED",
+    "authorizationVerdict": "BLOCKED",
+    "authorizedActionManifest": {"status": "NOT_AUTHORIZED", "requestedActionManifestHash": "1db7076ee8fd1df6d1e06d2c889c457b45193a3944ba925505c6120ee2437171"},
+    "authorizationConstraints": ["exact action manifest binding", "execution forbidden unless AUTHORIZED"]
+  },
+  "receiptHash": "6733abf7b655f58c186f265cc4a1c3bac52e05b8fc4f9e87db3191c5e94cce33"
+}

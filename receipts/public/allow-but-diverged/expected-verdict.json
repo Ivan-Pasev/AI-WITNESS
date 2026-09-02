@@ -1,0 +1,10 @@
+{
+  "caseId": "ALLOW_BUT_DIVERGED",
+  "chain": "CHAIN_VALID",
+  "policy": "ALLOW",
+  "approval": "REQUIRED_AND_APPROVED",
+  "authorization": "AUTHORIZED",
+  "execution": "EXECUTED",
+  "correspondence": "DIVERGED",
+  "hederaEvidence": "NONE"
+}

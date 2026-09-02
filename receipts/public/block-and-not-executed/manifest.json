@@ -1,0 +1,14 @@
+{
+  "caseId": "BLOCK_AND_NOT_EXECUTED",
+  "protocol": "IRP-1",
+  "schemaVersion": "1",
+  "receipts": [
+    {"receiptId": "demo-b-w0", "receiptKind": "W0_OBSERVATION", "receiptHash": "954ccfcbf6e58544abdd03b2b22158d5fecac65ff4c4045fb6ebf0d3740afe94"},
+    {"receiptId": "demo-b-w1", "receiptKind": "W1_INTENT", "receiptHash": "36a68006d397b9eacd1b60d6ed0f344f90bf1b64592f6cf268ff46a647e8a409"},
+    {"receiptId": "demo-b-w2", "receiptKind": "W2_AUTHORIZATION", "receiptHash": "6733abf7b655f58c186f265cc4a1c3bac52e05b8fc4f9e87db3191c5e94cce33"},
+    {"receiptId": "demo-b-w3", "receiptKind": "W3_OUTCOME", "receiptHash": "1dec58adc1ecefd6400a76b18aa55ddeefeec999446cd3ae46ecf2133da89bbf"}
+  ],
+  "policy": {"policyId": "github-demo-policy", "version": "1", "policyHash": "3a93fb8cb92a325379f3f3b154693af076cb1ec509e467fe357b54cb108208c0"},
+  "generationProfile": "IRP-1-PHASE4-DETERMINISTIC-v1",
+  "publicBundleDescriptorHash": "f61410612b82016b3f8042f333b22a38f63ff0daae5d0d0a81be8c85d8d76b30"
+}
