@@ -1,9 +1,16 @@
+import { canonicalize } from "../protocol/canonicalize.ts";
 import { buildAnchorPayload, calculatePublicManifestHash } from "../hedera/anchor.ts";
 import { queryMirrorMessage } from "../hedera/mirror-query.ts";
 import type { PublicAnchorPayload } from "../hedera/types.ts";
 import { verifyMirrorAnchor } from "../hedera/verify-anchor.ts";
+import { evaluatePolicy } from "../policy/evaluate.ts";
+import type { PolicyInput } from "../policy/types.ts";
 import { validateCompleteChain } from "../protocol/chain.ts";
-import type { JsonObject, ReceiptEnvelope } from "../protocol/types.ts";
+import {
+  AUTHORIZATION_VERDICTS,
+  type JsonObject,
+  type ReceiptEnvelope,
+} from "../protocol/types.ts";
 import { validateReceiptIntegrity } from "../protocol/validate.ts";
 import type {
   AnchorVerifierResult,
@@ -28,11 +35,41 @@ function receiptByKind(
   return receipts.find((receipt) => receipt.receiptKind === kind);
 }
 
-function policyVerdict(w2: ReceiptEnvelope | undefined): PolicyVerifierVerdict {
-  const value = w2?.payload.policyVerdict;
-  return value === "ALLOW" || value === "BLOCK" || value === "ESCALATE"
-    ? value
-    : "POLICY_UNKNOWN";
+function replayPolicy(
+  w2: ReceiptEnvelope | undefined,
+  policy: unknown,
+): { verdict: PolicyVerifierVerdict; issues: string[] } {
+  if (w2 === undefined || policy === undefined) {
+    return { verdict: "POLICY_UNKNOWN", issues: ["Independent public policy replay was not available."] };
+  }
+  try {
+    const input = w2.payload.policyInput as PolicyInput | undefined;
+    if (input === undefined || input === null || typeof input !== "object" || Array.isArray(input)) {
+      return { verdict: "POLICY_UNKNOWN", issues: ["W2 policyInput is not replayable."] };
+    }
+    const evaluation = evaluatePolicy(policy, input);
+    const recordedHash = w2.payload.policyHash;
+    const recordedVerdict = w2.payload.policyVerdict;
+    const recordedEvaluation = w2.payload.policyEvaluation;
+    const mismatches: string[] = [];
+    if (recordedHash !== evaluation.policyHash) mismatches.push("POLICY_HASH_MISMATCH");
+    if (recordedVerdict !== evaluation.verdict) mismatches.push("POLICY_VERDICT_MISMATCH");
+    if (canonicalize(recordedEvaluation as never) !== canonicalize(evaluation.ruleResults as never)) {
+      mismatches.push("POLICY_RULE_RESULTS_MISMATCH");
+    }
+    if (mismatches.length > 0) {
+      return {
+        verdict: "POLICY_UNKNOWN",
+        issues: mismatches.map((entry) => `${entry}: recorded W2 policy evidence differs from independent replay.`),
+      };
+    }
+    return { verdict: evaluation.verdict, issues: [] };
+  } catch (error) {
+    return {
+      verdict: "POLICY_UNKNOWN",
+      issues: [error instanceof Error ? `POLICY_REPLAY_ERROR: ${error.message}` : "POLICY_REPLAY_ERROR"],
+    };
+  }
 }
 
 function approvalVerdict(w2: ReceiptEnvelope | undefined): ApprovalVerifierVerdict {
@@ -56,10 +93,7 @@ function correspondenceVerdict(
     : "UNKNOWN";
 }
 
-function chainVerdict(
-  ok: boolean,
-  issueCategories: readonly string[],
-): ChainVerdict {
+function chainVerdict(ok: boolean, issueCategories: readonly string[]): ChainVerdict {
   if (issueCategories.includes("FORK_DETECTED")) return "FORK_DETECTED";
   return ok ? "CHAIN_VALID" : "CHAIN_BROKEN";
 }
@@ -82,37 +116,35 @@ export function verifyLocalBundle(input: ReceiptBundleInput): LocalVerifierRepor
   }
 
   const integrityResults = receipts.map((receipt) => validateReceiptIntegrity(receipt));
-  const receiptIntegrity = integrityResults.every((result) => result.ok)
-    ? "INTACT"
-    : "MODIFIED";
-
+  const receiptIntegrity = integrityResults.every((result) => result.ok) ? "INTACT" : "MODIFIED";
   const chain = validateCompleteChain(receipts);
   const w2 = receiptByKind(receipts, "W2_AUTHORIZATION");
   const w3 = receiptByKind(receipts, "W3_OUTCOME");
+  const replay = replayPolicy(w2, input.policy);
+  const authorizationValue = w2?.payload.authorizationVerdict;
+  const authorization =
+    typeof authorizationValue === "string" &&
+    AUTHORIZATION_VERDICTS.includes(authorizationValue as (typeof AUTHORIZATION_VERDICTS)[number])
+      ? (authorizationValue as (typeof AUTHORIZATION_VERDICTS)[number])
+      : "UNKNOWN";
 
   return {
     receiptIntegrity,
-    chain: chainVerdict(
-      chain.ok,
-      chain.issues.map((entry) => entry.category),
-    ),
+    chain: chainVerdict(chain.ok, chain.issues.map((entry) => entry.category)),
     consensus: "NOT_CHECKED",
-    policy: policyVerdict(w2),
+    policy: replay.verdict,
     approval: approvalVerdict(w2),
     correspondence: correspondenceVerdict(w3),
-    authorization:
-      typeof w2?.payload.authorizationVerdict === "string"
-        ? w2.payload.authorizationVerdict
-        : "UNKNOWN",
+    authorization,
     issues: [
       ...integrityResults.flatMap((result) =>
         result.issues.map((entry) => `${entry.category}: ${entry.message}`),
       ),
       ...chain.issues.map((entry) => `${entry.category}: ${entry.message}`),
+      ...replay.issues,
+      ...(authorization === "UNKNOWN" ? ["AUTHORIZATION_UNKNOWN: W2 authorization verdict is missing or invalid."] : []),
     ],
-    findings: chain.findings.map(
-      (entry) => `${entry.category}: ${entry.message}`,
-    ),
+    findings: chain.findings.map((entry) => `${entry.category}: ${entry.message}`),
     semanticTruthBoundary: BOUNDARY,
   };
 }
@@ -122,9 +154,7 @@ function expectedAnchorPayload(record: Phase5AnchorRecord): PublicAnchorPayload 
   if (stage !== "W2_AUTHORIZATION" && stage !== "W3_OUTCOME") {
     throw new Error("Network evidence anchorStage is invalid.");
   }
-  const manifestHash = calculatePublicManifestHash(
-    record.publicManifest as JsonObject,
-  );
+  const manifestHash = calculatePublicManifestHash(record.publicManifest as JsonObject);
   if (manifestHash !== record.publicManifestHash) {
     throw new Error("Network evidence publicManifestHash does not recompute.");
   }
@@ -143,9 +173,7 @@ function expectedAnchorPayload(record: Phase5AnchorRecord): PublicAnchorPayload 
   return buildAnchorPayload(pseudoReceipt, record.publicManifest as JsonObject);
 }
 
-function aggregateConsensus(
-  results: readonly AnchorVerifierResult[],
-): ConsensusVerdict {
+function aggregateConsensus(results: readonly AnchorVerifierResult[]): ConsensusVerdict {
   if (results.length === 0) return "NOT_CHECKED";
   if (results.every((entry) => entry.verdict === "ANCHORED")) return "ANCHORED";
   const precedence: ConsensusVerdict[] = [
@@ -156,8 +184,7 @@ function aggregateConsensus(
     "MIRROR_ERROR",
     "NOT_FOUND",
   ];
-  return precedence.find((value) => results.some((entry) => entry.verdict === value))
-    ?? "MIRROR_ERROR";
+  return precedence.find((value) => results.some((entry) => entry.verdict === value)) ?? "MIRROR_ERROR";
 }
 
 export async function verifyPhase5NetworkEvidence(
@@ -168,9 +195,11 @@ export async function verifyPhase5NetworkEvidence(
     evidence.protocol !== "IRP-1" ||
     evidence.schemaVersion !== "1" ||
     evidence.network !== "testnet" ||
-    evidence.claimBoundary !== BOUNDARY
+    evidence.claimBoundary !== BOUNDARY ||
+    !Array.isArray(evidence.cases) ||
+    evidence.cases.length !== 3
   ) {
-    throw new Error("Phase-5 network evidence identity or claim boundary is invalid.");
+    throw new Error("Phase-5 network evidence identity, case cardinality, or claim boundary is invalid.");
   }
 
   const anchors: AnchorVerifierResult[] = [];
@@ -199,18 +228,13 @@ export async function verifyPhase5NetworkEvidence(
         verdict = verification.verdict;
         issues = verification.issues;
         consensusTimestamp = verification.consensusTimestamp ?? null;
-        if (
-          verification.verdict === "ANCHORED" &&
-          consensusTimestamp !== record.consensusTimestamp
-        ) {
+        if (verification.verdict === "ANCHORED" && consensusTimestamp !== record.consensusTimestamp) {
           verdict = "PAYLOAD_MISMATCH";
           issues = ["Consensus timestamp differs from the recorded Phase-5 evidence."];
         }
       } catch (error) {
         verdict = "MIRROR_ERROR";
-        issues = [
-          error instanceof Error ? error.message : "Mirror verification failed.",
-        ];
+        issues = [error instanceof Error ? error.message : "Mirror verification failed."];
       }
       anchors.push({
         caseId: caseEvidence.caseId,

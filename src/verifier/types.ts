@@ -1,4 +1,5 @@
-import type { ReceiptEnvelope } from "../protocol/types.ts";
+import type { AuthorizationVerdict, ReceiptEnvelope } from "../protocol/types.ts";
+import type { PolicyDocument } from "../policy/types.ts";
 
 export type ReceiptIntegrityVerdict = "INTACT" | "MODIFIED" | "MISSING";
 export type ChainVerdict = "CHAIN_VALID" | "CHAIN_BROKEN" | "FORK_DETECTED";
@@ -26,6 +27,7 @@ export type CorrespondenceVerifierVerdict =
 
 export interface ReceiptBundleInput {
   receipts: ReceiptEnvelope[];
+  policy?: PolicyDocument | unknown;
 }
 
 export interface LocalVerifierReport {
@@ -35,7 +37,7 @@ export interface LocalVerifierReport {
   policy: PolicyVerifierVerdict;
   approval: ApprovalVerifierVerdict;
   correspondence: CorrespondenceVerifierVerdict;
-  authorization: string;
+  authorization: AuthorizationVerdict | "UNKNOWN";
   issues: string[];
   findings: string[];
   semanticTruthBoundary: "SEMANTIC TRUTH: NOT PROVEN BY IRP-1";
