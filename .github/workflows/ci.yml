@@ -31,3 +31,11 @@ jobs:
         run: npm run verify:public -- local
       - name: Independent live Hedera Mirror verification
         run: npm run verify:public -- network
+      - name: Install locked Agent Kit integration dependencies
+        run: npm ci --prefix integrations/hedera-agent-kit
+      - name: Agent Kit integration dependency audit
+        run: npm audit --prefix integrations/hedera-agent-kit
+      - name: Agent Kit integration typecheck
+        run: npm run typecheck --prefix integrations/hedera-agent-kit
+      - name: Agent Kit / MCP integration tests
+        run: npm test --prefix integrations/hedera-agent-kit
