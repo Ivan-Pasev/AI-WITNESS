@@ -1,0 +1,31 @@
+name: AIW Omega9 lock generator
+
+on:
+  push:
+    branches:
+      - aiw-omega9-agent-kit
+
+permissions:
+  contents: write
+
+jobs:
+  lock:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: integrations/hedera-agent-kit/package.json
+      - name: Generate integration lockfile
+        run: npm install --package-lock-only --ignore-scripts --prefix integrations/hedera-agent-kit
+      - name: Commit generated lockfile
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add integrations/hedera-agent-kit/package-lock.json
+          git diff --cached --quiet && exit 0
+          git commit -m 'chore(integration): lock Agent Kit dependencies'
+          git push
