@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>IRP-1 Public Verifier</title>
+  <style>
+    body{font:16px/1.5 system-ui,sans-serif;max-width:980px;margin:40px auto;padding:0 20px;color:#171717}
+    textarea{width:100%;min-height:260px;font:13px/1.4 ui-monospace,monospace}
+    button{padding:10px 14px;margin:8px 8px 8px 0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+    .card{border:1px solid #bbb;border-radius:8px;padding:12px}.boundary{font-weight:700;border-top:2px solid #222;padding-top:16px}
+    pre{white-space:pre-wrap;overflow-wrap:anywhere}
+  </style>
+</head>
+<body>
+  <h1>AI WITNESS / IRP-1 Public Verifier</h1>
+  <p>This static surface keeps receipt, chain, consensus, policy, approval and correspondence verdicts separate. It does not emit a trust score.</p>
+  <p><button id="loadNetwork">Load published Hedera evidence</button><button id="verify">Inspect pasted/file JSON</button><input id="file" type="file" accept=".json,application/json"></p>
+  <textarea id="input" placeholder='Paste receipts bundle {"receipts":[W0,W1,W2,W3]} or Phase-5 Hedera evidence JSON'></textarea>
+  <div id="verdicts" class="grid"></div>
+  <pre id="details"></pre>
+  <p class="boundary">SEMANTIC TRUTH: NOT PROVEN BY IRP-1</p>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

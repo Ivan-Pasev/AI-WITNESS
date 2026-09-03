@@ -8,7 +8,8 @@
   },
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "test": "node --test --experimental-strip-types tests/protocol/*.test.ts tests/policy/*.test.ts tests/demo/*.test.ts tests/hedera/*.test.ts"
+    "test": "node --test --experimental-strip-types tests/protocol/*.test.ts tests/policy/*.test.ts tests/demo/*.test.ts tests/hedera/*.test.ts tests/verifier/*.test.ts",
+    "verify:public": "node --experimental-strip-types scripts/verify-public.ts"
   },
   "devDependencies": {
     "@types/node": "22.15.17",
