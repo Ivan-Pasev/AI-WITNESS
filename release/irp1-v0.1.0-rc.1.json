@@ -1,0 +1,82 @@
+{
+  "releaseId": "v0.1.0-rc.1",
+  "releaseClass": "PUBLIC_PROOF_RELEASE_CANDIDATE",
+  "publicationStatus": "CANDIDATE_NOT_PUBLISHED",
+  "canonicalCommit": "SELF",
+  "selfReferenceRule": "SELF means the Git commit containing this manifest. The exact accepted commit SHA and exact validation run are recorded in reports/08-public-release-candidate.md and the canonical engineering handoff after validation.",
+  "phase7EntryCommit": "a7bed674ab13fba2fdaac6c1eadc9561adc52bdc",
+  "protocol": "IRP-1",
+  "schemaVersion": "1",
+  "nodeRuntime": ">=22 <23",
+  "npmPackage": {
+    "private": true,
+    "metadataVersion": "0.1.0-preproof",
+    "releaseAuthority": "NOT_NPM_PACKAGE_METADATA"
+  },
+  "policy": {
+    "id": "github-demo-policy",
+    "version": "1",
+    "hash": "3a93fb8cb92a325379f3f3b154693af076cb1ec509e467fe357b54cb108208c0",
+    "path": "policies/github-demo-policy.json"
+  },
+  "cases": [
+    "ALLOW_AND_MATCH",
+    "BLOCK_AND_NOT_EXECUTED",
+    "ALLOW_BUT_DIVERGED"
+  ],
+  "hedera": {
+    "network": "testnet",
+    "topicId": "0.0.10345032",
+    "anchorCount": 6,
+    "evidenceIndex": "receipts/public/hedera-testnet/index.json"
+  },
+  "verifier": {
+    "authoritative": "scripts/verify-public.ts",
+    "browserSurface": "public/verifier/",
+    "browserEquivalence": "NOT_EQUIVALENT"
+  },
+  "reproduce": [
+    "npm ci",
+    "npm audit",
+    "npm run typecheck",
+    "npm test",
+    "npm run verify:public -- local",
+    "npm run verify:public -- network"
+  ],
+  "pages": {
+    "status": "DEFERRED_NOT_DEPLOYED",
+    "url": null
+  },
+  "provenance": {
+    "historicalCommitSigning": "UNSIGNED",
+    "releaseSigningClaim": "NONE",
+    "mainProtectionAtEntry": "UNPROTECTED"
+  },
+  "inventory": {
+    "specification": [
+      "specification/IRP-1.md",
+      "specification/CLAIM-BOUNDARY.md",
+      "specification/STATUS-TAXONOMY.md",
+      "specification/THREAT-MODEL.md",
+      "specification/DFT-LINEAGE.md",
+      "specification/PRIVACY-MODEL.md"
+    ],
+    "reports": [
+      "reports/00.5-opportunity-positioning.md",
+      "reports/02-receipt-core.md",
+      "reports/03-policy-engine.md",
+      "reports/04-three-cases.md",
+      "reports/05-hedera-testnet.md",
+      "reports/06-public-verifier.md",
+      "reports/07-security-claims-standards-audit.md",
+      "reports/08-public-release-candidate.md"
+    ],
+    "evidence": [
+      "receipts/public/allow-and-match/",
+      "receipts/public/block-and-not-executed/",
+      "receipts/public/allow-but-diverged/",
+      "receipts/public/hedera-testnet/index.json"
+    ]
+  },
+  "claimBoundary": "SEMANTIC TRUTH: NOT PROVEN BY IRP-1"
+}
