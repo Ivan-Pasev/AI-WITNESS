@@ -1,0 +1,162 @@
+{
+  "protocol": "IRP-1",
+  "schemaVersion": "1",
+  "profile": "IRP-1-HEDERA-TESTNET-P5-A-v1",
+  "network": "testnet",
+  "mirrorBase": "https://testnet.mirrornode.hedera.com",
+  "topicId": "0.0.10345032",
+  "topicCreationMode": "CREATED_WITH_SUBMIT_KEY",
+  "cases": [
+    {
+      "caseId": "ALLOW_AND_MATCH",
+      "baselineCaseSlug": "allow-and-match",
+      "profile": "IRP-1-HEDERA-TESTNET-P5-A-v1",
+      "runId": "c1fd787c91da43f68986ddd743719c4a",
+      "executionObservedAt": "2026-09-03T07:00:09.420Z",
+      "correspondenceVerdict": "MATCH",
+      "w2": {
+        "anchoredReceiptId": "p5-c1fd787c91da43f68986ddd743719c4a-w2",
+        "anchoredReceiptHash": "4f3caf570f42709cf3cb5f1ae1951dd2a6c08cb4ddb5d9cd650d1ea79e082a5c",
+        "previousReceiptHash": "4c6730e96f07a8b93eb6587a2c0f178be5b99593abf937498c859b0809c74acd",
+        "publicManifest": {
+          "profile": "IRP-1-HEDERA-TESTNET-P5-A-v1",
+          "caseId": "ALLOW_AND_MATCH",
+          "baselineCaseSlug": "allow-and-match",
+          "anchorStage": "W2_AUTHORIZATION",
+          "receiptId": "p5-c1fd787c91da43f68986ddd743719c4a-w2",
+          "receiptHash": "4f3caf570f42709cf3cb5f1ae1951dd2a6c08cb4ddb5d9cd650d1ea79e082a5c",
+          "previousReceiptHash": "4c6730e96f07a8b93eb6587a2c0f178be5b99593abf937498c859b0809c74acd",
+          "disclosure": "PUBLIC_MINIMIZED_COMMITMENT"
+        },
+        "publicManifestHash": "c4cb6904c2cceb7c7f79198176ac2d38943dc1f4aa47ed2b96614c266f034271",
+        "topicId": "0.0.10345032",
+        "sequenceNumber": 1,
+        "consensusTimestamp": "1788418804.817731018",
+        "mirrorLookupReference": "/api/v1/topics/0.0.10345032/messages/1",
+        "verificationVerdict": "ANCHORED"
+      },
+      "w3": {
+        "anchoredReceiptId": "p5-c1fd787c91da43f68986ddd743719c4a-w3",
+        "anchoredReceiptHash": "bc86861144a59fd91f7e20e33ccddfc6a969318d82a0b25e3c0d543aad1a8e10",
+        "previousReceiptHash": "4f3caf570f42709cf3cb5f1ae1951dd2a6c08cb4ddb5d9cd650d1ea79e082a5c",
+        "publicManifest": {
+          "profile": "IRP-1-HEDERA-TESTNET-P5-A-v1",
+          "caseId": "ALLOW_AND_MATCH",
+          "baselineCaseSlug": "allow-and-match",
+          "anchorStage": "W3_OUTCOME",
+          "receiptId": "p5-c1fd787c91da43f68986ddd743719c4a-w3",
+          "receiptHash": "bc86861144a59fd91f7e20e33ccddfc6a969318d82a0b25e3c0d543aad1a8e10",
+          "previousReceiptHash": "4f3caf570f42709cf3cb5f1ae1951dd2a6c08cb4ddb5d9cd650d1ea79e082a5c",
+          "disclosure": "PUBLIC_MINIMIZED_COMMITMENT"
+        },
+        "publicManifestHash": "3038f0b5f2c0e4507b48b25bd4a19406849f4d40a858824fa4488f0022443a5c",
+        "topicId": "0.0.10345032",
+        "sequenceNumber": 2,
+        "consensusTimestamp": "1788418809.687396104",
+        "mirrorLookupReference": "/api/v1/topics/0.0.10345032/messages/2",
+        "verificationVerdict": "ANCHORED"
+      }
+    },
+    {
+      "caseId": "BLOCK_AND_NOT_EXECUTED",
+      "baselineCaseSlug": "block-and-not-executed",
+      "profile": "IRP-1-HEDERA-TESTNET-P5-A-v1",
+      "runId": "58b344f4c21c4c84b408e1c279e57319",
+      "executionObservedAt": "2026-09-03T07:00:17.641Z",
+      "correspondenceVerdict": "NOT_EXECUTED",
+      "w2": {
+        "anchoredReceiptId": "p5-58b344f4c21c4c84b408e1c279e57319-w2",
+        "anchoredReceiptHash": "a5e92c49b2e95072472bb31eab308b792e30e73775c2f9492ef478fb981fe276",
+        "previousReceiptHash": "f435a4e306fa38225cc897653d8b8cf6ee93cc08050e4b0148b292f5d7ddef6d",
+        "publicManifest": {
+          "profile": "IRP-1-HEDERA-TESTNET-P5-A-v1",
+          "caseId": "BLOCK_AND_NOT_EXECUTED",
+          "baselineCaseSlug": "block-and-not-executed",
+          "anchorStage": "W2_AUTHORIZATION",
+          "receiptId": "p5-58b344f4c21c4c84b408e1c279e57319-w2",
+          "receiptHash": "a5e92c49b2e95072472bb31eab308b792e30e73775c2f9492ef478fb981fe276",
+          "previousReceiptHash": "f435a4e306fa38225cc897653d8b8cf6ee93cc08050e4b0148b292f5d7ddef6d",
+          "disclosure": "PUBLIC_MINIMIZED_COMMITMENT"
+        },
+        "publicManifestHash": "7037481041d15695b59ba0ec17aab8204a7d536bf765e2772272cafb8572c879",
+        "topicId": "0.0.10345032",
+        "sequenceNumber": 3,
+        "consensusTimestamp": "1788418814.312396092",
+        "mirrorLookupReference": "/api/v1/topics/0.0.10345032/messages/3",
+        "verificationVerdict": "ANCHORED"
+      },
+      "w3": {
+        "anchoredReceiptId": "p5-58b344f4c21c4c84b408e1c279e57319-w3",
+        "anchoredReceiptHash": "55f1d85c9aae917ce2f9db8e47fa3132af5461b82f46d8a5d8627c25e792e32d",
+        "previousReceiptHash": "a5e92c49b2e95072472bb31eab308b792e30e73775c2f9492ef478fb981fe276",
+        "publicManifest": {
+          "profile": "IRP-1-HEDERA-TESTNET-P5-A-v1",
+          "caseId": "BLOCK_AND_NOT_EXECUTED",
+          "baselineCaseSlug": "block-and-not-executed",
+          "anchorStage": "W3_OUTCOME",
+          "receiptId": "p5-58b344f4c21c4c84b408e1c279e57319-w3",
+          "receiptHash": "55f1d85c9aae917ce2f9db8e47fa3132af5461b82f46d8a5d8627c25e792e32d",
+          "previousReceiptHash": "a5e92c49b2e95072472bb31eab308b792e30e73775c2f9492ef478fb981fe276",
+          "disclosure": "PUBLIC_MINIMIZED_COMMITMENT"
+        },
+        "publicManifestHash": "48246f65a0df5acde3f36b9d296bebc8c4c2d2b2cad3c2281f8ed6a54f13c106",
+        "topicId": "0.0.10345032",
+        "sequenceNumber": 4,
+        "consensusTimestamp": "1788418817.852413619",
+        "mirrorLookupReference": "/api/v1/topics/0.0.10345032/messages/4",
+        "verificationVerdict": "ANCHORED"
+      }
+    },
+    {
+      "caseId": "ALLOW_BUT_DIVERGED",
+      "baselineCaseSlug": "allow-but-diverged",
+      "profile": "IRP-1-HEDERA-TESTNET-P5-A-v1",
+      "runId": "1988110b7c2a4802a6a096fe552bfcc3",
+      "executionObservedAt": "2026-09-03T07:00:26.455Z",
+      "correspondenceVerdict": "DIVERGED",
+      "w2": {
+        "anchoredReceiptId": "p5-1988110b7c2a4802a6a096fe552bfcc3-w2",
+        "anchoredReceiptHash": "a14e36b85cd341ad77c861c3e2a9744e3242444d480b4bad5882ffbf97ae9785",
+        "previousReceiptHash": "64c3d10863f3b54676fac0f4999a029643b8f6563680b69ab53d6cd7eb34e716",
+        "publicManifest": {
+          "profile": "IRP-1-HEDERA-TESTNET-P5-A-v1",
+          "caseId": "ALLOW_BUT_DIVERGED",
+          "baselineCaseSlug": "allow-but-diverged",
+          "anchorStage": "W2_AUTHORIZATION",
+          "receiptId": "p5-1988110b7c2a4802a6a096fe552bfcc3-w2",
+          "receiptHash": "a14e36b85cd341ad77c861c3e2a9744e3242444d480b4bad5882ffbf97ae9785",
+          "previousReceiptHash": "64c3d10863f3b54676fac0f4999a029643b8f6563680b69ab53d6cd7eb34e716",
+          "disclosure": "PUBLIC_MINIMIZED_COMMITMENT"
+        },
+        "publicManifestHash": "44d2a205e377d2b2940802fdc6c5161d37bf7d917402009eb3d4a666c4517cf8",
+        "topicId": "0.0.10345032",
+        "sequenceNumber": 5,
+        "consensusTimestamp": "1788418822.248989845",
+        "mirrorLookupReference": "/api/v1/topics/0.0.10345032/messages/5",
+        "verificationVerdict": "ANCHORED"
+      },
+      "w3": {
+        "anchoredReceiptId": "p5-1988110b7c2a4802a6a096fe552bfcc3-w3",
+        "anchoredReceiptHash": "03c94f54cfb5b42262390c144df9089407b1da7a8617b2a5ff8d2b9bf1ed851a",
+        "previousReceiptHash": "a14e36b85cd341ad77c861c3e2a9744e3242444d480b4bad5882ffbf97ae9785",
+        "publicManifest": {
+          "profile": "IRP-1-HEDERA-TESTNET-P5-A-v1",
+          "caseId": "ALLOW_BUT_DIVERGED",
+          "baselineCaseSlug": "allow-but-diverged",
+          "anchorStage": "W3_OUTCOME",
+          "receiptId": "p5-1988110b7c2a4802a6a096fe552bfcc3-w3",
+          "receiptHash": "03c94f54cfb5b42262390c144df9089407b1da7a8617b2a5ff8d2b9bf1ed851a",
+          "previousReceiptHash": "a14e36b85cd341ad77c861c3e2a9744e3242444d480b4bad5882ffbf97ae9785",
+          "disclosure": "PUBLIC_MINIMIZED_COMMITMENT"
+        },
+        "publicManifestHash": "fbb283d7c4ec8d2c33c90de508e157c3d88ff9135c3953455ff2e1f7f333f1ce",
+        "topicId": "0.0.10345032",
+        "sequenceNumber": 6,
+        "consensusTimestamp": "1788418826.760866104",
+        "mirrorLookupReference": "/api/v1/topics/0.0.10345032/messages/6",
+        "verificationVerdict": "ANCHORED"
+      }
+    }
+  ],
+  "claimBoundary": "SEMANTIC TRUTH: NOT PROVEN BY IRP-1"
+}
