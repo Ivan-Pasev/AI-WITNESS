@@ -9,6 +9,8 @@ on:
       - aiw-omega5-final-verify-v3
       - aiw-omega6-final-verify-v1
       - aiw-omega6-final-verify-v2
+      - aiw-omega6-final-verify-v3
+      - aiw-omega6-final-verify-v4
   pull_request:
 
 permissions:
