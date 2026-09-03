@@ -14,11 +14,11 @@ IRP-1 does **not** prove that an AI interpretation was true, that reasoning was 
 
 ## Release candidate
 
-The first bounded public-proof release-candidate identity is **`v0.1.0-rc.1`**. This is a GitHub/public-proof RC identity, not a production-readiness claim and not an npm package publication. The repository package remains `private: true`; its npm metadata is intentionally not used as the public release authority.
+The first bounded public-proof release candidate is **`v0.1.0-rc.1`**. Its RC gate is accepted by exact-commit reproduction, but it is **not yet represented as a published GitHub tag/release**. This is a GitHub/public-proof RC identity, not a production-readiness claim and not an npm package publication.
 
-Machine-readable RC metadata is in `release/irp1-v0.1.0-rc.1.json`. The Phase-8 adjudication record is `reports/08-public-release-candidate.md`.
+The repository package remains `private: true`; its npm metadata is intentionally not used as the public release authority. Machine-readable RC metadata is in `release/irp1-v0.1.0-rc.1.json`, and Phase-8 evidence is in `reports/08-public-release-candidate.md`.
 
-No GitHub release/tag, signed-release claim, or deployed GitHub Pages URL is implied merely by the presence of RC metadata. Those publication/provenance facts must be evidenced separately.
+No signed-release claim or deployed GitHub Pages URL is made without separate evidence.
 
 ## Reproduce the public proof
 
@@ -72,8 +72,8 @@ See:
 
 ## Status
 
-Phases 0–7 are closed by reproducible evidence. Phase 8 is the bounded public release-candidate gate. **GO_PUBLIC remains HOLD until the exact RC candidate is verified and the publication/GO_PUBLIC action is separately evidenced.**
+Phases 0–8 have passed their bounded engineering/evidence gates. `v0.1.0-rc.1` is **RC_ACCEPTED_NOT_PUBLISHED**. **GO_PUBLIC is HOLD_PUBLICATION_ACTION_REQUIRED** until the tag/release/provenance publication step is actually executed and evidenced.
 
-Current bounded release-hardening debt includes unsigned historical commits, an unprotected `main` branch unless separately changed, the unmaintained transitive `crypto-js@4.2.0` dependency despite current zero-finding npm advisory results, and the intentionally weaker browser verifier surface.
+Current bounded release-hardening debt includes unsigned historical commits, an unprotected `main` branch unless separately changed, the unmaintained transitive `crypto-js@4.2.0` dependency despite current zero-finding npm advisory results, the deferred-not-deployed GitHub Pages convenience surface, and the intentionally weaker browser verifier surface.
 
 Apache-2.0 licensed.

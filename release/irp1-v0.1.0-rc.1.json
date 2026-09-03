@@ -1,10 +1,20 @@
 {
   "releaseId": "v0.1.0-rc.1",
   "releaseClass": "PUBLIC_PROOF_RELEASE_CANDIDATE",
-  "publicationStatus": "CANDIDATE_NOT_PUBLISHED",
+  "publicationStatus": "RC_ACCEPTED_NOT_PUBLISHED",
   "canonicalCommit": "SELF",
-  "selfReferenceRule": "SELF means the Git commit containing this manifest. The exact accepted commit SHA and exact validation run are recorded in reports/08-public-release-candidate.md and the canonical engineering handoff after validation.",
+  "selfReferenceRule": "SELF means the Git commit containing this manifest. The exact accepted commit SHA and exact validation run are recorded in reports/08-public-release-candidate.md and the canonical engineering handoff.",
   "phase7EntryCommit": "a7bed674ab13fba2fdaac6c1eadc9561adc52bdc",
+  "candidateValidation": {
+    "candidateCommit": "5fcd1a68f40eb3088036ec277b79fbd1a1ddb951",
+    "githubActionsRun": 33765093095,
+    "job": 100680792248,
+    "tests": 157,
+    "failures": 0,
+    "npmAuditReportedVulnerabilities": 0,
+    "liveAnchorVerdict": "ANCHORED",
+    "liveAnchorCount": 6
+  },
   "protocol": "IRP-1",
   "schemaVersion": "1",
   "nodeRuntime": ">=22 <23",
@@ -50,7 +60,8 @@
   "provenance": {
     "historicalCommitSigning": "UNSIGNED",
     "releaseSigningClaim": "NONE",
-    "mainProtectionAtEntry": "UNPROTECTED"
+    "mainProtectionAtEntry": "UNPROTECTED",
+    "publicationAction": "REQUIRED_SEPARATELY"
   },
   "inventory": {
     "specification": [
@@ -78,5 +89,6 @@
       "receipts/public/hedera-testnet/index.json"
     ]
   },
+  "goPublic": "HOLD_PUBLICATION_ACTION_REQUIRED",
   "claimBoundary": "SEMANTIC TRUTH: NOT PROVEN BY IRP-1"
 }

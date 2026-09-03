@@ -23,17 +23,17 @@ Permanent boundary: **SEMANTIC TRUTH: NOT PROVEN BY IRP-1**.
 
 ## Exact-candidate validation
 
-The following are mandatory on the exact accepted candidate and remain **PENDING** until the external GitHub Actions run is recorded in `reports/08-public-release-candidate.md`:
+Candidate `5fcd1a68f40eb3088036ec277b79fbd1a1ddb951` was exercised by GitHub Actions run `33765093095`, job `100680792248`:
 
-- [ ] `npm ci`
-- [ ] `npm audit`
-- [ ] `npm run typecheck`
-- [ ] `npm test`
-- [ ] `npm run verify:public -- local`
-- [ ] `npm run verify:public -- network`
-- [ ] deterministic suite 100% pass
-- [ ] all six published Hedera anchors independently return `ANCHORED`
-- [ ] exact candidate promoted to `main` without force
+- [x] `npm ci`
+- [x] `npm audit` — 0 vulnerabilities reported by the current advisory database
+- [x] `npm run typecheck`
+- [x] `npm test` — 157 PASS / 0 FAIL
+- [x] `npm run verify:public -- local`
+- [x] `npm run verify:public -- network`
+- [x] all six published Hedera anchors independently returned `ANCHORED`
+
+The final closure commit containing this completed checklist must itself pass the same exact-SHA gate before non-forced promotion to `main`.
 
 ## Security / privacy / claims
 
@@ -49,12 +49,12 @@ The following are mandatory on the exact accepted candidate and remain **PENDING
 - [x] Historical commit history is not rewritten to add signatures.
 - [x] No signed-release claim is made without cryptographic evidence.
 - [x] Main branch protection state is disclosed rather than assumed.
-- [x] GitHub Pages is `DEFERRED_NOT_DEPLOYED` unless a real deployment is separately evidenced.
-- [x] No Pages URL is fabricated.
+- [x] GitHub Pages is `DEFERRED_NOT_DEPLOYED`; no URL is fabricated.
 - [x] No GitHub tag/release is implied by RC metadata alone.
+- [x] A distinct publication action is required before GO_PUBLIC can be closed.
 
 ## RC acceptance
 
-RC acceptance requires exact-candidate CI plus live public evidence re-verification. Even after RC acceptance, public tag/release/Pages/provenance actions require a distinct evidence-bearing publication step if they cannot be executed and verified in this gate.
+The Phase-8 RC engineering gate is accepted subject to exact closure-commit revalidation. Publication is intentionally separate.
 
-**GO_PUBLIC: HOLD until explicitly adjudicated from exact evidence.**
+**GO_PUBLIC: HOLD_PUBLICATION_ACTION_REQUIRED**
