@@ -1,0 +1,26 @@
+{
+  "name": "@ai-witness/hedera-agent-kit-irp1",
+  "version": "0.1.0-rc.1",
+  "private": true,
+  "type": "module",
+  "engines": {"node": ">=22 <23"},
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "node --test --experimental-strip-types tests/*.test.ts"
+  },
+  "dependencies": {
+    "@hashgraph/hedera-agent-kit": "4.1.0",
+    "@hashgraph/hedera-agent-kit-mcp": "1.1.0",
+    "@hiero-ledger/sdk": "2.87.0",
+    "@modelcontextprotocol/sdk": "1.30.0",
+    "zod": "3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "22.15.17",
+    "typescript": "5.8.3"
+  },
+  "overrides": {
+    "protobufjs": "8.6.6",
+    "ws": "8.21.0"
+  }
+}
